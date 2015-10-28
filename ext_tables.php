@@ -19,10 +19,8 @@ $tmp = Array(
 	),
 );
 
-
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', $tmp);
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('pages', 'tx_ncstaticfilecache_cache;;;;1-1-1');
-
 
 if (TYPO3_MODE == 'BE') {
 	// Add Web>Info module:
