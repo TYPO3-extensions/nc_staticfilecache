@@ -50,7 +50,7 @@ class ClearCachePostProc {
 		}
 
 		// Get Page TSconfig relevant:
-		$tscPID = DataHandler::getPID($table, $uid);
+		$tscPID = $pObj->getPID($table, $uid);
 
 		if (is_numeric($tscPID) && (intval($tscPID)>=0)) {
 			$tscPID = intval($tscPID);
