@@ -70,31 +70,6 @@ class StaticFileCache implements SingletonInterface
     }
 
     /**
-     * Clear static file
-     *
-     * @param array $params array containing 'cacheCmd'
-     *
-     * @return void
-     */
-    public function clearStaticFile(&$params)
-    {
-        if (!isset($params['cacheCmd']) || !$params['cacheCmd']) {
-            return;
-        }
-        switch ($params['cacheCmd']) {
-            case 'all':
-            case 'pages':
-                $this->cache->flush();
-                break;
-            default:
-                if (MathUtility::canBeInterpretedAsInteger($params['cacheCmd'])) {
-                    CacheUtility::clearByPageId($params['cacheCmd']);
-                }
-                break;
-        }
-    }
-
-    /**
      * Check if the SFC should create the cache
      *
      * @param    TypoScriptFrontendController $pObj : The parent object
