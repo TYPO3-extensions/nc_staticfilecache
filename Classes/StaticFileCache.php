@@ -139,10 +139,10 @@ class StaticFileCache implements SingletonInterface
 
         if (!$ruleArguments['skipProcessing']) {
 
-            $cacheTags = [
-                'pageId_' . $pObj->page['uid'],
-                'domain_' . str_replace('.', '_', parse_url($uri, PHP_URL_HOST)),
-            ];
+            // The page tag pageId_NN is included in $pObj->pageCacheTags
+            $cacheTags = ObjectAccess::getProperty($pObj, 'pageCacheTags', true);
+            $cacheTags[] = 'sfc_pageId_' . $pObj->page['uid'];
+            $cacheTags[] = 'sfc_domain_' . str_replace('.', '_', parse_url($uri, PHP_URL_HOST));
 
             // This is supposed to have "&& !$pObj->beUserLogin" in there as well
             // This fsck's up the ctrl-shift-reload hack, so I pulled it out.

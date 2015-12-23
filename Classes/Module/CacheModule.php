@@ -84,7 +84,7 @@ class CacheModule extends AbstractFunctionModule
 
         foreach ($tree->tree as $row) {
 
-            $cacheEntries = $cache->getByTag('pageId_' . $row['row']['uid']);
+            $cacheEntries = $cache->getByTag('sfc_pageId_' . $row['row']['uid']);
             if ($cacheEntries) {
                 $isFirst = true;
                 foreach ($cacheEntries as $identifier => $info) {
