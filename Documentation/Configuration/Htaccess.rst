@@ -66,10 +66,6 @@ Here is a part of the gzip.realurl version:
    # Please close this browser session first or remove the cookie manually or use another browser to hit your frontend.
    RewriteCond %{HTTP_COOKIE} !be_typo_user [NC]
 
-   # Check for Ctrl Shift reload
-   RewriteCond %{HTTP:Pragma} !no-cache
-   RewriteCond %{HTTP:Cache-Control} !no-cache
-
    # Rewrite the request to the static file.
    RewriteRule .* typo3temp/tx_ncstaticfilecache/%{ENV:SFC_PROTOCOL}/%{HTTP_HOST}%{ENV:SFC_URI}%{ENV:SFC_FILE}%{ENV:SFC_GZIP} [L]
 
