@@ -12,3 +12,4 @@ I recommend to use two browsers when testing this extension. One for browsing th
 	PageConfiguration
 	Global
 	Htaccess
+	Nginx
