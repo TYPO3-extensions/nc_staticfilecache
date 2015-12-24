@@ -22,11 +22,6 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPo
 // Create cache
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['insertPageIncache'][$_EXTKEY] = 'SFC\\NcStaticfilecache\\StaticFileCache';
 
-// Catch Ctrl + Shift + reload (only works when backend user is logged in)
-//	You need the be_typo_user cookie detection enabled in the rewrite rules
-//	for this to work.
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['tslib_fe-PostProc'][$_EXTKEY] = $hookNamespace . 'HeaderNoCache->headerNoCache';
-
 // Set cookie when User logs in
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['initFEuser'][$_EXTKEY] = $hookNamespace . 'InitFrontendUser->setFeUserCookie';
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_userauth.php']['logoff_post_processing'][$_EXTKEY] = $hookNamespace . 'LogoffFrontendUser->logoff';
