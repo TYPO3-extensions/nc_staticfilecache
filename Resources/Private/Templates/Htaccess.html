@@ -1,8 +1,9 @@
+<f:if condition="{sendCacheControlHeader}">
 <IfModule mod_expires.c>
 	ExpiresActive on
 	ExpiresByType text/html {mode}{lifetime}
 </IfModule>
-
+</f:if>
 <f:if condition="{sendCacheControlHeaderRedirectAfterCacheTimeout}">
 <IfModule mod_rewrite.c>
 	RewriteEngine On

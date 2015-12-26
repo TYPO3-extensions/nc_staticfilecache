@@ -88,7 +88,7 @@ class StaticFileBackend extends AbstractBackend
      */
     protected function writeHtAccessFile($originalFileName, $lifetime)
     {
-        if ($this->configuration->get('sendCacheControlHeader')) {
+        if ($this->configuration->get('sendCacheControlHeader') || $this->configuration->get('sendCacheControlHeaderRedirectAfterCacheTimeout')) {
             $fileName = PathUtility::pathinfo($originalFileName, PATHINFO_DIRNAME) . '/.htaccess';
             $accessTimeout = $this->configuration->get('htaccessTimeout');
             $lifetime = $accessTimeout ? $accessTimeout : $this->getRealLifetime($lifetime);
@@ -100,6 +100,7 @@ class StaticFileBackend extends AbstractBackend
                 'mode' => $accessTimeout ? 'A' : 'M',
                 'lifetime' => $lifetime,
                 'expires' => time() + $lifetime,
+                'sendCacheControlHeader' => (bool)$this->configuration->get('sendCacheControlHeader'),
                 'sendCacheControlHeaderRedirectAfterCacheTimeout' => (bool)$this->configuration->get('sendCacheControlHeaderRedirectAfterCacheTimeout'),
             ]);
 
