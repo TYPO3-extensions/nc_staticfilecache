@@ -84,12 +84,7 @@ class StaticFileCache implements SingletonInterface
         switch ($params['cacheCmd']) {
             case 'all':
             case 'pages':
-                if ((boolean)$this->configuration->get('clearCacheForAllDomains')) {
-                    $this->cache->flush();
-                } else {
-                    $this->cache->flushByTag('domain_' . str_replace('.', '_',
-                            GeneralUtility::getIndpEnv('TYPO3_HOST_ONLY')));
-                }
+                $this->cache->flush();
                 break;
             default:
                 if (MathUtility::canBeInterpretedAsInteger($params['cacheCmd'])) {
