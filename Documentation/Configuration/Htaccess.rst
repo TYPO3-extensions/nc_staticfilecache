@@ -61,8 +61,9 @@ Here is a part of the gzip.realurl version:
    # We only redirect GET requests
    RewriteCond %{REQUEST_METHOD} GET
 
-   # NO backend user is logged in. Please note that the be_typo_user cookie expires at the
-   # end of the browser session. If you have logged out of the TYPO3 backend and are expecting to see cached pages but don't. Please close this browser settion first or remove the cookie manually or use another browser to hit your frontend.
+   # NO backend user is logged in. Please note that the be_typo_user cookie expires at the end of the browser session.
+   # If you have logged out of the TYPO3 backend and are expecting to see cached pages but don't.
+   # Please close this browser session first or remove the cookie manually or use another browser to hit your frontend.
    RewriteCond %{HTTP_COOKIE} !be_typo_user [NC]
 
    # Check for Ctrl Shift reload
