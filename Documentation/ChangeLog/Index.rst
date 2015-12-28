@@ -10,6 +10,7 @@ ChangeLog
 - [TASK] Format the code  by PSR-2
 - [BUGFIX] There is no first parameter for the GeneralUtility::milliseconds function
 - [TASK] Convert array to short syntax (need PHP 5.4.x)
+- [BUGIX] #70673 No static file after FE user logged out
 
 2015-09-09 Tim Lochmüller <tim@fruit-lab.de>
 
