@@ -1,6 +1,10 @@
 ChangeLog
 ---------
 
+2015-12-28 Tim Lochmüller <tim@fruit-lab.de>
+
+- [BUGFIX] Fix the "Illegal link configuration." check
+
 2015-09-09 Tim Lochmüller <tim@fruit-lab.de>
 
 - [BUGFIX] Fix the ValidUri Rule. Also check for "index.php" in the URI
