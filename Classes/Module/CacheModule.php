@@ -157,6 +157,7 @@ class CacheModule extends AbstractFunctionModule
 
         if (GeneralUtility::compat_version('7.0')) {
             // Fix a bug in 7.x generation of the HTML (missing ") and also fix the style
+            // @see https://forge.typo3.org/issues/72453
             $search = [
                 'list-tree-control list-tree-control-closed href',
                 'list-tree-control list-tree-control-open href',

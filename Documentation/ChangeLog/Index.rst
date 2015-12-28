@@ -13,6 +13,8 @@ ChangeLog
 - [BUGFIX] #70673 No static file after FE user logged out
 - [BUGFIX] #70994 Tree view in info module just one entry (TYPO3 7.x)
 - [BUGFIX] Fix the remove expired pages button
+- Add comment about the core bug
+- Prepare Release 3.5.0
 
 2015-09-09 Tim Lochmüller <tim@fruit-lab.de>
 
