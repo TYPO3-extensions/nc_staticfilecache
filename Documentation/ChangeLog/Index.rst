@@ -20,7 +20,7 @@ ChangeLog
 
 2015-08-20 Tim Lochmüller <tim@fruit-lab.de>
 
-- #68473 Fix compatiblity bug for 7.x
+- #68473 Fix compatibility bug for 7.x
 - Prepare Release 3.4.1
 
 2015-07-13 Tim Lochmüller <tim@fruit-lab.de>
