@@ -10,7 +10,8 @@ ChangeLog
 - [TASK] Format the code  by PSR-2
 - [BUGFIX] There is no first parameter for the GeneralUtility::milliseconds function
 - [TASK] Convert array to short syntax (need PHP 5.4.x)
-- [BUGIX] #70673 No static file after FE user logged out
+- [BUGFIX] #70673 No static file after FE user logged out
+- [BUGFIX] #70994 Tree view in info module just one entry (TYPO3 7.x)
 
 2015-09-09 Tim Lochmüller <tim@fruit-lab.de>
 

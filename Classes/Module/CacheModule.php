@@ -85,7 +85,6 @@ class CacheModule extends AbstractFunctionModule
         foreach ($tree->tree as $row) {
 
             $cacheEntries = $cache->getByTag('pageId_' . $row['row']['uid']);
-
             if ($cacheEntries) {
                 $isFirst = true;
                 foreach ($cacheEntries as $identifier => $info) {
@@ -95,6 +94,7 @@ class CacheModule extends AbstractFunctionModule
                                 true) : $row['HTML_depthData'],
                         'identifier' => $identifier,
                         'info' => $info,
+                        'depthData' => $row['depthData'],
                     ];
                     $isFirst = false;
 
@@ -104,6 +104,7 @@ class CacheModule extends AbstractFunctionModule
                 $cell = [
                     'uid' => $row['row']['uid'],
                     'title' => $row['HTML'] . BackendUtility::getRecordTitle('pages', $row['row'], true),
+                    'depthData' => $row['depthData'],
                 ];
                 $rows[] = $cell;
             }
@@ -153,6 +154,21 @@ class CacheModule extends AbstractFunctionModule
             $content = preg_replace('/(href=")([^"]+PM=[^"#]+)(#[^"]+)?(")/',
                 '${1}${2}&id=' . $this->pageId . '${3}${4}', $content);
         }
+
+        if (GeneralUtility::compat_version('7.0')) {
+            // Fix a bug in 7.x generation of the HTML (missing ") and also fix the style
+            $search = [
+                'list-tree-control list-tree-control-closed href',
+                'list-tree-control list-tree-control-open href',
+            ];
+            $replace = [
+                'list-tree-control list-tree-control-closed" style="margin-left: -5px" href',
+                'list-tree-control list-tree-control-open" style="margin-left: -5px" href',
+            ];
+            $content = str_replace($search, $replace, $content);
+        }
+
+
         return $content;
     }
 }
