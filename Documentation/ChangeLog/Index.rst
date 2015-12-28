@@ -7,6 +7,8 @@ ChangeLog
 - [BUGFIX] Fix the security rule to allow the redirect but disallow the direct access
 - [TASK] Format the htaccess file (one comment)
 - [TASK] Migrate Cookie related stuff to the CookieUtility
+- [TASK] Format the code  by PSR-2
+- [BUGFIX] There is no first parameter for the GeneralUtility::milliseconds function
 
 2015-09-09 Tim Lochmüller <tim@fruit-lab.de>
 

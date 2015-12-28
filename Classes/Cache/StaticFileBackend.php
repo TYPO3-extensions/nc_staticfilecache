@@ -201,7 +201,7 @@ class StaticFileBackend extends AbstractBackend
     {
         $absoluteCacheDir = GeneralUtility::getFileAbsFileName($this->cacheDirectory);
         if (is_dir($absoluteCacheDir)) {
-            $tempAbsoluteCacheDir = rtrim($absoluteCacheDir, '/') . '_' . GeneralUtility::milliseconds(true) . '/';
+            $tempAbsoluteCacheDir = rtrim($absoluteCacheDir, '/') . '_' . GeneralUtility::milliseconds() . '/';
             rename($absoluteCacheDir, $tempAbsoluteCacheDir);
         }
         parent::flush();
