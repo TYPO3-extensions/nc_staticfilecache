@@ -131,7 +131,7 @@ class CacheModule extends AbstractFunctionModule
     {
         $action = GeneralUtility::_GP('ACTION');
 
-        if (isset($action['removeExpiredPages'])) {
+        if (isset($action['removeExpiredPages']) && (bool)$action['removeExpiredPages']) {
             CacheUtility::getCache()
                 ->collectGarbage();
         }

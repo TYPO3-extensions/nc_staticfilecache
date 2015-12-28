@@ -1,11 +1,12 @@
 <h1>Static file cache</h1>
 <p>
-	<button type="submit" class="btn btn-default" onclick="return confirm('Are you sure?');" value="" name="ACTION[removeExpiredPages]">
+
+	<a href="{requestUri}&ACTION[removeExpiredPages]=1" class="btn btn-default" onclick="return confirm('Are you sure?');">
 		<f:be.buttons.icon icon="actions-edit-delete" />
 		Remove all expired pages
-	</button>
-	<a href="{requestUri}" class="btn btn-default">
-		<f:be.buttons.icon icon="actions-system-refresh" title="{f:translate(key: 'LLL:EXT:lang/locallang_core.xml:labels.refresh')}" />
+	</a>
+	<a href="{requestUri}&ACTION[removeExpiredPages]=0" class="btn btn-default">
+		<f:be.buttons.icon icon="actions-system-refresh" />
 		{f:translate(key: 'LLL:EXT:lang/locallang_core.xml:labels.refresh')}
 	</a>
 </p>
