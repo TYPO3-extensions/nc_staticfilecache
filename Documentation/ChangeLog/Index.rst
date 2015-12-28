@@ -3,9 +3,14 @@ ChangeLog
 
 2015-09-09 Tim Lochmüller <tim@fruit-lab.de>
 
-- Fix the ValidUri Rule. Also check for "index.php" in the URI
+- [BUGFIX] Fix the ValidUri Rule. Also check for "index.php" in the URI
 - Introduce REQUEST_URI wrapper in the htaccess file. Fix problem of empty URI #59182
 - Fix typo in the htaccess file
+- Streamline the htaccess configuration
+- Put the document root also in a env variable (.htaccess)
+- [BUGFIX] Fix the security rule
+- [BUGFIX] don't delete cache, when editor changes content in workspaces
+- [BUGFIX] Add one more rule check for the valid cache URI
 
 2015-08-20 Tim Lochmüller <tim@fruit-lab.de>
 
