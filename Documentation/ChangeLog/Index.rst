@@ -4,6 +4,7 @@ ChangeLog
 2015-12-28 Tim Lochmüller <tim@fruit-lab.de>
 
 - [BUGFIX] Fix the "Illegal link configuration." check
+- [BUGFIX] Fix the security rule to allow the redirect but disallow the direct access
 
 2015-09-09 Tim Lochmüller <tim@fruit-lab.de>
 

@@ -26,10 +26,6 @@ Here is a part of the gzip.realurl version:
    RewriteCond %{REQUEST_URI} ^/?$
    RewriteRule .* - [E=SFC_URI:/]
 
-   # Do not allow direct call the cache entries
-   RewriteCond %{ENV:SFC_URI} ^/typo3temp/tx_ncstaticfilecache/.*
-   RewriteRule .* - [F,L]
-
    # Get scheme/protocol
    RewriteCond %{SERVER_PORT} ^443$
    RewriteRule .* - [E=SFC_PROTOCOL:https]
@@ -75,6 +71,11 @@ Here is a part of the gzip.realurl version:
 
    # Rewrite the request to the static file.
    RewriteRule .* typo3temp/tx_ncstaticfilecache/%{ENV:SFC_PROTOCOL}/%{HTTP_HOST}%{ENV:SFC_URI}%{ENV:SFC_FILE}%{ENV:SFC_GZIP} [L]
+
+   # Do not allow direct call the cache entries
+   RewriteCond %{ENV:SFC_URI} ^/typo3temp/tx_ncstaticfilecache/.*
+   RewriteCond %{ENV:REDIRECT_STATUS} ^$
+   RewriteRule .* - [F,L]
 
    ### Begin: Static File Cache (options) ####
 
