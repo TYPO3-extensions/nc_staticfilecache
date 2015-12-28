@@ -32,10 +32,10 @@ class HeaderNoCache
      */
     public function headerNoCache(array &$params, TypoScriptFrontendController $parent)
     {
-        $header = array(
+        $header = [
             strtolower($_SERVER['HTTP_CACHE_CONTROL']),
             strtolower($_SERVER['HTTP_PRAGMA'])
-        );
+        ];
         if (in_array('no-cache', $header) && $parent->beUserLogin) {
             CacheUtility::clearByPageId($parent->id);
         }

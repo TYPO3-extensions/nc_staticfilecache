@@ -48,7 +48,7 @@ class CookieUtility
         }
         if ($cookieDomain) {
             if ($cookieDomain[0] == '/') {
-                $match = array();
+                $match = [];
                 $matchCnt = preg_match($cookieDomain, GeneralUtility::getIndpEnv('TYPO3_HOST_ONLY'), $match);
                 if ($matchCnt === false) {
                     GeneralUtility::sysLog('The regular expression for the cookie domain (' . $cookieDomain . ') contains errors. The session is not shared across sub-domains.',

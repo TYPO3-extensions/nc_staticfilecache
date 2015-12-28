@@ -8,7 +8,6 @@
 
 namespace SFC\NcStaticfilecache\Command;
 
-use SFC\NcStaticfilecache\StaticFileCache;
 use SFC\NcStaticfilecache\Utility\CacheUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\CommandController;
 

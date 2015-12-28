@@ -32,7 +32,7 @@ class NoIntScripts extends AbstractRule
     {
         if ($frontendController->isINTincScript()) {
             foreach ($frontendController->config['INTincScript'] as $key => $value) {
-                $info = array();
+                $info = [];
                 if (isset($value['type'])) {
                     $info[] = 'type: ' . $value['type'];
                 }

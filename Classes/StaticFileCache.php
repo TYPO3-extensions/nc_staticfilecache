@@ -113,10 +113,10 @@ class StaticFileCache implements SingletonInterface
         $uri = $this->getUri();
 
         // Signal: Initialize variables before starting the processing.
-        $preProcessArguments = array(
+        $preProcessArguments = [
             'frontendController' => $pObj,
             'uri' => $uri,
-        );
+        ];
         $preProcessArguments = $this->signalDispatcher->dispatch(__CLASS__, 'preProcess', $preProcessArguments);
         $uri = $preProcessArguments['uri'];
 
@@ -128,21 +128,21 @@ class StaticFileCache implements SingletonInterface
         }
 
         // cache rules
-        $ruleArguments = array(
+        $ruleArguments = [
             'frontendController' => $pObj,
             'uri' => $uri,
-            'explanation' => array(),
+            'explanation' => [],
             'skipProcessing' => false,
-        );
+        ];
         $ruleArguments = $this->signalDispatcher->dispatch(__CLASS__, 'cacheRule', $ruleArguments);
         $explanation = $ruleArguments['explanation'];
 
         if (!$ruleArguments['skipProcessing']) {
 
-            $cacheTags = array(
+            $cacheTags = [
                 'pageId_' . $pObj->page['uid'],
                 'domain_' . str_replace('.', '_', parse_url($uri, PHP_URL_HOST)),
-            );
+            ];
 
             // This is supposed to have "&& !$pObj->beUserLogin" in there as well
             // This fsck's up the ctrl-shift-reload hack, so I pulled it out.
@@ -164,12 +164,12 @@ class StaticFileCache implements SingletonInterface
                 }
 
                 // Signal: Process content before writing to static cached file
-                $processContentArguments = array(
+                $processContentArguments = [
                     'frontendController' => $pObj,
                     'uri' => $uri,
                     'content' => $content,
                     'timeOutSeconds' => $timeOutSeconds,
-                );
+                ];
                 $processContentArguments = $this->signalDispatcher->dispatch(__CLASS__, 'processContent',
                     $processContentArguments);
                 $content = $processContentArguments['content'];
@@ -187,11 +187,11 @@ class StaticFileCache implements SingletonInterface
         }
 
         // Signal: Post process (no matter whether content was cached statically)
-        $postProcessArguments = array(
+        $postProcessArguments = [
             'frontendController' => $pObj,
             'uri' => $uri,
             'isStaticCached' => $isStaticCached,
-        );
+        ];
         $this->signalDispatcher->dispatch(__CLASS__, 'postProcess', $postProcessArguments);
     }
 

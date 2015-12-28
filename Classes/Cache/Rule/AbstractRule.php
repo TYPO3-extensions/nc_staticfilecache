@@ -8,7 +8,6 @@
 
 namespace SFC\NcStaticfilecache\Cache\Rule;
 
-use SFC\NcStaticfilecache\Configuration;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 /**
@@ -32,12 +31,12 @@ abstract class AbstractRule
     public function check($frontendController, $uri, $explanation, $skipProcessing)
     {
         $this->checkRule($frontendController, $uri, $explanation, $skipProcessing);
-        return array(
+        return [
             'frontendController' => $frontendController,
             'uri' => $uri,
             'explanation' => $explanation,
             'skipProcessing' => $skipProcessing,
-        );
+        ];
     }
 
     /**

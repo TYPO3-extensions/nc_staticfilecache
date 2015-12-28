@@ -8,8 +8,6 @@
 
 namespace SFC\NcStaticfilecache\Utility;
 
-use SFC\NcStaticfilecache\Configuration;
-use SFC\NcStaticfilecache\StaticFileCache;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /**

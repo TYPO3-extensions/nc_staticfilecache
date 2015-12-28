@@ -30,7 +30,7 @@ class ValidDoktype extends AbstractRule
      */
     public function checkRule($frontendController, $uri, &$explanation, &$skipProcessing)
     {
-        $ignoreTypes = array(3);
+        $ignoreTypes = [3];
         if (in_array($frontendController->page['doktype'], $ignoreTypes)) {
             $explanation[__CLASS__] = 'The Page doktype is one of the following not allowed numbers: ' . implode(', ',
                     $ignoreTypes);

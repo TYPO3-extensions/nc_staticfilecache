@@ -8,7 +8,6 @@
 
 namespace SFC\NcStaticfilecache\Hook;
 
-use SFC\NcStaticfilecache\StaticFileCache;
 use SFC\NcStaticfilecache\Utility\CacheUtility;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;

@@ -48,7 +48,7 @@ class UriFrontend extends StringFrontend
      * @throws \TYPO3\CMS\Core\Cache\Exception\InvalidDataException if the variable to cache is not of type string
      * @api
      */
-    public function set($entryIdentifier, $string, array $tags = array(), $lifetime = null)
+    public function set($entryIdentifier, $string, array $tags = [], $lifetime = null)
     {
         if (!$this->isValidEntryIdentifier($entryIdentifier)) {
             throw new \InvalidArgumentException('"' . $entryIdentifier . '" is not a valid cache entry identifier.',
@@ -75,10 +75,10 @@ class UriFrontend extends StringFrontend
             throw new \InvalidArgumentException('"' . $tag . '" is not a valid tag for a cache entry.', 1233057772);
         }
         if (!($this->backend instanceof TaggableBackendInterface)) {
-            return array();
+            return [];
         }
         $identifiers = $this->backend->findIdentifiersByTag($tag);
-        $return = array();
+        $return = [];
         foreach ($identifiers as $identifier) {
             $return[$identifier] = $this->get($identifier);
         }

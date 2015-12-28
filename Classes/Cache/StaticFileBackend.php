@@ -43,12 +43,12 @@ class StaticFileBackend extends AbstractBackend
      * @throws \TYPO3\CMS\Core\Cache\Exception if no cache frontend has been set.
      * @throws \TYPO3\CMS\Core\Cache\Exception\InvalidDataException if the data is not a string
      */
-    public function set($entryIdentifier, $data, array $tags = array(), $lifetime = null)
+    public function set($entryIdentifier, $data, array $tags = [], $lifetime = null)
     {
-        $databaseData = array(
+        $databaseData = [
             'created' => $GLOBALS['EXEC_TIME'],
             'expires' => ($GLOBALS['EXEC_TIME'] + $this->getRealLifetime($lifetime)),
-        );
+        ];
         if (in_array('explanation', $tags)) {
             $databaseData['explanation'] = $data;
             parent::set($entryIdentifier, serialize($databaseData), $tags, $lifetime);
@@ -96,12 +96,12 @@ class StaticFileBackend extends AbstractBackend
             /** @var StandaloneView $renderer */
             $renderer = GeneralUtility::makeInstance('TYPO3\\CMS\\Fluid\\View\\StandaloneView');
             $renderer->setTemplatePathAndFilename(GeneralUtility::getFileAbsFileName('EXT:nc_staticfilecache/Resources/Private/Templates/Htaccess.html'));
-            $renderer->assignMultiple(array(
+            $renderer->assignMultiple([
                 'mode' => $accessTimeout ? 'A' : 'M',
                 'lifetime' => $lifetime,
                 'expires' => time() + $lifetime,
                 'sendCacheControlHeaderRedirectAfterCacheTimeout' => (bool)$this->configuration->get('sendCacheControlHeaderRedirectAfterCacheTimeout'),
-            ));
+            ]);
 
             GeneralUtility::writeFile($fileName, $renderer->render());
         }
@@ -180,11 +180,11 @@ class StaticFileBackend extends AbstractBackend
     protected function removeStaticFiles($entryIdentifier)
     {
         $fileName = $this->getCacheFilename($entryIdentifier);
-        $files = array(
+        $files = [
             $fileName,
             $fileName . '.gz',
             PathUtility::pathinfo($fileName, PATHINFO_DIRNAME) . '/.htaccess'
-        );
+        ];
         foreach ($files as $file) {
             if (is_file($file)) {
                 unlink($file);

@@ -39,7 +39,7 @@ class AbstractBackend extends Typo3DatabaseBackend
      * @param string $context FLOW3's application context
      * @param array $options Configuration options - depends on the actual backend
      */
-    public function __construct($context, array $options = array())
+    public function __construct($context, array $options = [])
     {
         parent::__construct($context, $options);
         $this->configuration = GeneralUtility::makeInstance('SFC\\NcStaticfilecache\\Configuration');

@@ -8,16 +8,16 @@ if (!defined('TYPO3_MODE')) {
     die('Access denied.');
 }
 
-$tmp = Array(
-    'tx_ncstaticfilecache_cache' => Array(
+$tmp = [
+    'tx_ncstaticfilecache_cache' => [
         'exclude' => 0,
         'label' => 'LLL:EXT:nc_staticfilecache/Resources/Private/Language/locallang.xml:nc_staticfilecache.field',
-        'config' => Array(
+        'config' => [
             'type' => 'check',
             'default' => '1',
-        ),
-    ),
-);
+        ],
+    ],
+];
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', $tmp);
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('pages', 'tx_ncstaticfilecache_cache;;;;1-1-1');

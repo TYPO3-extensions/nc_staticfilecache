@@ -8,8 +8,6 @@
 
 namespace SFC\NcStaticfilecache\Module;
 
-use SFC\NcStaticfilecache\Configuration;
-use SFC\NcStaticfilecache\StaticFileCache;
 use SFC\NcStaticfilecache\Utility\CacheUtility;
 use TYPO3\CMS\Backend\Module\AbstractFunctionModule;
 use TYPO3\CMS\Backend\Tree\View\BrowseTreeView;
@@ -53,13 +51,13 @@ class CacheModule extends AbstractFunctionModule
 
         // Set starting page Id of tree (overrides webmounts):
         if ($this->pageId > 0) {
-            $tree->MOUNTS = array(0 => $this->pageId);
+            $tree->MOUNTS = [0 => $this->pageId];
         }
 
         $tree->ext_IconMode = true;
         $tree->showDefaultTitleAttribute = true;
         $tree->thisScript = BackendUtility::getModuleUrl(GeneralUtility::_GP('M'));
-        if (is_callable(array($tree, 'setTreeName'))) {
+        if (is_callable([$tree, 'setTreeName'])) {
             $tree->setTreeName('staticfilecache');
         } else {
             $tree->treeName = 'staticfilecache';
@@ -81,7 +79,7 @@ class CacheModule extends AbstractFunctionModule
      */
     protected function renderModule(BrowseTreeView $tree)
     {
-        $rows = array();
+        $rows = [];
         $cache = CacheUtility::getCache();
 
         foreach ($tree->tree as $row) {
@@ -91,22 +89,22 @@ class CacheModule extends AbstractFunctionModule
             if ($cacheEntries) {
                 $isFirst = true;
                 foreach ($cacheEntries as $identifier => $info) {
-                    $cell = array(
+                    $cell = [
                         'uid' => $row['row']['uid'],
                         'title' => $isFirst ? $row['HTML'] . BackendUtility::getRecordTitle('pages', $row['row'],
                                 true) : $row['HTML_depthData'],
                         'identifier' => $identifier,
                         'info' => $info,
-                    );
+                    ];
                     $isFirst = false;
 
                     $rows[] = $cell;
                 }
             } else {
-                $cell = array(
+                $cell = [
                     'uid' => $row['row']['uid'],
                     'title' => $row['HTML'] . BackendUtility::getRecordTitle('pages', $row['row'], true),
-                );
+                ];
                 $rows[] = $cell;
             }
         }
@@ -114,11 +112,11 @@ class CacheModule extends AbstractFunctionModule
         /** @var StandaloneView $renderer */
         $renderer = GeneralUtility::makeInstance('TYPO3\\CMS\\Fluid\\View\\StandaloneView');
         $renderer->setTemplatePathAndFilename(GeneralUtility::getFileAbsFileName('EXT:nc_staticfilecache/Resources/Private/Templates/Module.html'));
-        $renderer->assignMultiple(array(
+        $renderer->assignMultiple([
             'requestUri' => GeneralUtility::getIndpEnv('REQUEST_URI'),
             'rows' => $rows,
             'pageId' => $this->pageId
-        ));
+        ]);
 
         return $renderer->render();
     }

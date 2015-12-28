@@ -23,7 +23,7 @@ class Configuration implements SingletonInterface
      *
      * @var array
      */
-    protected $configuration = array();
+    protected $configuration = [];
 
     /**
      * Build up the configuration

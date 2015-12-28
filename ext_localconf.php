@@ -60,11 +60,11 @@ $signalSlotDispatcher->connect('SFC\\NcStaticfilecache\\StaticFileCache', 'cache
     'SFC\\NcStaticfilecache\\Cache\\Rule\\Enable', 'check');
 
 // new Cache for Static file caches
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['static_file_cache'] = array(
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['static_file_cache'] = [
     'frontend' => 'SFC\\NcStaticfilecache\\Cache\\UriFrontend',
     'backend' => 'SFC\\NcStaticfilecache\\Cache\\StaticFileBackend',
-    'groups' => array(
+    'groups' => [
         'pages',
         'all'
-    ),
-);
+    ],
+];

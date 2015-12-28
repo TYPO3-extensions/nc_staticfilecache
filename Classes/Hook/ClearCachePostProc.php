@@ -64,7 +64,7 @@ class ClearCachePostProc
         $tsConfig = $pObj->getTCEMAIN_TSconfig($tscPID);
 
         if (!$tsConfig['clearCache_disable']) {
-            $listCache = array();
+            $listCache = [];
             $databaseConnection = $this->getDatabaseConnection();
 
             // If table is "pages":
@@ -105,7 +105,7 @@ class ClearCachePostProc
             // Delete cache for selected pages:
             $ids = $databaseConnection->cleanIntArray($listCache);
             foreach ($ids as $id) {
-                $cmd = array('cacheCmd' => $id);
+                $cmd = ['cacheCmd' => $id];
                 $staticFileCache->clearStaticFile($cmd);
             }
         }
@@ -115,7 +115,7 @@ class ClearCachePostProc
             $Commands = GeneralUtility::trimExplode(',', strtolower($tsConfig['clearCacheCmd']), true);
             $Commands = array_unique($Commands);
             foreach ($Commands as $cmdPart) {
-                $cmd = array('cacheCmd' => $cmdPart);
+                $cmd = ['cacheCmd' => $cmdPart];
                 $staticFileCache->clearStaticFile($cmd);
             }
         }
