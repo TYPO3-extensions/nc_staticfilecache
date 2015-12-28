@@ -6,6 +6,7 @@ ChangeLog
 - [BUGFIX] Fix the "Illegal link configuration." check
 - [BUGFIX] Fix the security rule to allow the redirect but disallow the direct access
 - [TASK] Format the htaccess file (one comment)
+- [TASK] Migrate Cookie related stuff to the CookieUtility
 
 2015-09-09 Tim Lochmüller <tim@fruit-lab.de>
 

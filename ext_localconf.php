@@ -5,7 +5,7 @@
  */
 
 if (!defined('TYPO3_MODE')) {
-	die('Access denied.');
+    die('Access denied.');
 }
 
 // Register with "crawler" extension:
@@ -38,23 +38,33 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['extbase']['commandControllers'][] = '
 
 /** @var \TYPO3\CMS\Extbase\SignalSlot\Dispatcher $signalSlotDispatcher */
 $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher');
-$signalSlotDispatcher->connect('SFC\\NcStaticfilecache\\StaticFileCache', 'cacheRule', 'SFC\\NcStaticfilecache\\Cache\\Rule\\StaticCacheable', 'check');
-$signalSlotDispatcher->connect('SFC\\NcStaticfilecache\\StaticFileCache', 'cacheRule', 'SFC\\NcStaticfilecache\\Cache\\Rule\\ValidUri', 'check');
-$signalSlotDispatcher->connect('SFC\\NcStaticfilecache\\StaticFileCache', 'cacheRule', 'SFC\\NcStaticfilecache\\Cache\\Rule\\ValidDoktype', 'check');
-$signalSlotDispatcher->connect('SFC\\NcStaticfilecache\\StaticFileCache', 'cacheRule', 'SFC\\NcStaticfilecache\\Cache\\Rule\\NoWorkspacePreview', 'check');
-$signalSlotDispatcher->connect('SFC\\NcStaticfilecache\\StaticFileCache', 'cacheRule', 'SFC\\NcStaticfilecache\\Cache\\Rule\\NoUserOrGroupSet', 'check');
-$signalSlotDispatcher->connect('SFC\\NcStaticfilecache\\StaticFileCache', 'cacheRule', 'SFC\\NcStaticfilecache\\Cache\\Rule\\NoIntScripts', 'check');
-$signalSlotDispatcher->connect('SFC\\NcStaticfilecache\\StaticFileCache', 'cacheRule', 'SFC\\NcStaticfilecache\\Cache\\Rule\\LoginDeniedConfiguration', 'check');
-$signalSlotDispatcher->connect('SFC\\NcStaticfilecache\\StaticFileCache', 'cacheRule', 'SFC\\NcStaticfilecache\\Cache\\Rule\\PageCacheable', 'check');
-$signalSlotDispatcher->connect('SFC\\NcStaticfilecache\\StaticFileCache', 'cacheRule', 'SFC\\NcStaticfilecache\\Cache\\Rule\\NoNoCache', 'check');
-$signalSlotDispatcher->connect('SFC\\NcStaticfilecache\\StaticFileCache', 'cacheRule', 'SFC\\NcStaticfilecache\\Cache\\Rule\\Enable', 'check');
+$signalSlotDispatcher->connect('SFC\\NcStaticfilecache\\StaticFileCache', 'cacheRule',
+    'SFC\\NcStaticfilecache\\Cache\\Rule\\StaticCacheable', 'check');
+$signalSlotDispatcher->connect('SFC\\NcStaticfilecache\\StaticFileCache', 'cacheRule',
+    'SFC\\NcStaticfilecache\\Cache\\Rule\\ValidUri', 'check');
+$signalSlotDispatcher->connect('SFC\\NcStaticfilecache\\StaticFileCache', 'cacheRule',
+    'SFC\\NcStaticfilecache\\Cache\\Rule\\ValidDoktype', 'check');
+$signalSlotDispatcher->connect('SFC\\NcStaticfilecache\\StaticFileCache', 'cacheRule',
+    'SFC\\NcStaticfilecache\\Cache\\Rule\\NoWorkspacePreview', 'check');
+$signalSlotDispatcher->connect('SFC\\NcStaticfilecache\\StaticFileCache', 'cacheRule',
+    'SFC\\NcStaticfilecache\\Cache\\Rule\\NoUserOrGroupSet', 'check');
+$signalSlotDispatcher->connect('SFC\\NcStaticfilecache\\StaticFileCache', 'cacheRule',
+    'SFC\\NcStaticfilecache\\Cache\\Rule\\NoIntScripts', 'check');
+$signalSlotDispatcher->connect('SFC\\NcStaticfilecache\\StaticFileCache', 'cacheRule',
+    'SFC\\NcStaticfilecache\\Cache\\Rule\\LoginDeniedConfiguration', 'check');
+$signalSlotDispatcher->connect('SFC\\NcStaticfilecache\\StaticFileCache', 'cacheRule',
+    'SFC\\NcStaticfilecache\\Cache\\Rule\\PageCacheable', 'check');
+$signalSlotDispatcher->connect('SFC\\NcStaticfilecache\\StaticFileCache', 'cacheRule',
+    'SFC\\NcStaticfilecache\\Cache\\Rule\\NoNoCache', 'check');
+$signalSlotDispatcher->connect('SFC\\NcStaticfilecache\\StaticFileCache', 'cacheRule',
+    'SFC\\NcStaticfilecache\\Cache\\Rule\\Enable', 'check');
 
 // new Cache for Static file caches
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['static_file_cache'] = array(
-	'frontend' => 'SFC\\NcStaticfilecache\\Cache\\UriFrontend',
-	'backend'  => 'SFC\\NcStaticfilecache\\Cache\\StaticFileBackend',
-	'groups'   => array(
-		'pages',
-		'all'
-	),
+    'frontend' => 'SFC\\NcStaticfilecache\\Cache\\UriFrontend',
+    'backend' => 'SFC\\NcStaticfilecache\\Cache\\StaticFileBackend',
+    'groups' => array(
+        'pages',
+        'all'
+    ),
 );

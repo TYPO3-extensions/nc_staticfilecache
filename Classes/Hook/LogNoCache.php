@@ -16,23 +16,25 @@ use SFC\NcStaticfilecache\StaticFileCache;
  * @author         Tim Lochmüller
  * @author         Daniel Poetzinger
  */
-class LogNoCache {
+class LogNoCache
+{
 
-	/**
-	 * Log cache miss if no_cache is true
-	 *
-	 * @param    array  $params : Parameters delivered by the calling object
-	 * @param    object $parent : The calling parent object
-	 *
-	 * @return    void
-	 */
-	public function log(&$params, $parent) {
-		if ($params['pObj']) {
-			if ($params['pObj']->no_cache) {
-				$timeOutTime = 0;
-				StaticFileCache::getInstance()
-					->insertPageInCache($params['pObj'], $timeOutTime);
-			}
-		}
-	}
+    /**
+     * Log cache miss if no_cache is true
+     *
+     * @param    array $params : Parameters delivered by the calling object
+     * @param    object $parent : The calling parent object
+     *
+     * @return    void
+     */
+    public function log(&$params, $parent)
+    {
+        if ($params['pObj']) {
+            if ($params['pObj']->no_cache) {
+                $timeOutTime = 0;
+                StaticFileCache::getInstance()
+                    ->insertPageInCache($params['pObj'], $timeOutTime);
+            }
+        }
+    }
 }

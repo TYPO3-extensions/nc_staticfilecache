@@ -11,19 +11,19 @@
  ***************************************************************/
 
 $EM_CONF[$_EXTKEY] = array(
-	'title'            => 'Static File Cache',
-	'description'      => 'Transparent static file cache solution using mod_rewrite and mod_expires. Increase response times for static pages by a factor of 230!!',
-	'category'         => 'fe',
-	'version'          => '3.4.1',
-	'state'            => 'stable',
-	'modify_tables'    => 'pages',
-	'clearcacheonload' => TRUE,
-	'author'           => 'Static File Cache team',
-	'author_email'     => 'extensions@netcreators.com',
-	'author_company'   => 'Netcreators',
-	'constraints'      => array(
-		'depends' => array(
-			'typo3' => '6.2.0-7.99.99',
-		),
-	),
+    'title' => 'Static File Cache',
+    'description' => 'Transparent static file cache solution using mod_rewrite and mod_expires. Increase response times for static pages by a factor of 230!!',
+    'category' => 'fe',
+    'version' => '3.4.1',
+    'state' => 'stable',
+    'modify_tables' => 'pages',
+    'clearcacheonload' => true,
+    'author' => 'Static File Cache team',
+    'author_email' => 'extensions@netcreators.com',
+    'author_company' => 'Netcreators',
+    'constraints' => array(
+        'depends' => array(
+            'typo3' => '6.2.0-7.99.99',
+        ),
+    ),
 );

@@ -18,67 +18,72 @@ use TYPO3\CMS\Core\Utility\MathUtility;
  *
  * @author Tim Lochmüller
  */
-class AbstractBackend extends Typo3DatabaseBackend {
+class AbstractBackend extends Typo3DatabaseBackend
+{
 
-	/**
-	 * The default compression level
-	 */
-	const DEFAULT_COMPRESSION_LEVEL = 3;
+    /**
+     * The default compression level
+     */
+    const DEFAULT_COMPRESSION_LEVEL = 3;
 
-	/**
-	 * Configuration
-	 *
-	 * @var \SFC\NcStaticfilecache\Configuration
-	 */
-	protected $configuration;
+    /**
+     * Configuration
+     *
+     * @var \SFC\NcStaticfilecache\Configuration
+     */
+    protected $configuration;
 
-	/**
-	 * Constructs this backend
-	 *
-	 * @param string $context FLOW3's application context
-	 * @param array  $options Configuration options - depends on the actual backend
-	 */
-	public function __construct($context, array $options = array()) {
-		parent::__construct($context, $options);
-		$this->configuration = GeneralUtility::makeInstance('SFC\\NcStaticfilecache\\Configuration');
-	}
+    /**
+     * Constructs this backend
+     *
+     * @param string $context FLOW3's application context
+     * @param array $options Configuration options - depends on the actual backend
+     */
+    public function __construct($context, array $options = array())
+    {
+        parent::__construct($context, $options);
+        $this->configuration = GeneralUtility::makeInstance('SFC\\NcStaticfilecache\\Configuration');
+    }
 
-	/**
-	 * Get compression level
-	 *
-	 * @return int
-	 */
-	protected function getCompressionLevel() {
-		$level = isset($GLOBALS['TYPO3_CONF_VARS']['FE']['compressionLevel']) ? (int)$GLOBALS['TYPO3_CONF_VARS']['FE']['compressionLevel'] : self::DEFAULT_COMPRESSION_LEVEL;
-		if (!MathUtility::isIntegerInRange($level, 1, 9)) {
-			$level = self::DEFAULT_COMPRESSION_LEVEL;
-		}
-		return $level;
-	}
+    /**
+     * Get compression level
+     *
+     * @return int
+     */
+    protected function getCompressionLevel()
+    {
+        $level = isset($GLOBALS['TYPO3_CONF_VARS']['FE']['compressionLevel']) ? (int)$GLOBALS['TYPO3_CONF_VARS']['FE']['compressionLevel'] : self::DEFAULT_COMPRESSION_LEVEL;
+        if (!MathUtility::isIntegerInRange($level, 1, 9)) {
+            $level = self::DEFAULT_COMPRESSION_LEVEL;
+        }
+        return $level;
+    }
 
-	/**
-	 * Get the real life time
-	 *
-	 * @param int $lifetime
-	 *
-	 * @return int
-	 */
-	protected function getRealLifetime($lifetime) {
-		if (is_null($lifetime)) {
-			$lifetime = $this->defaultLifetime;
-		}
-		if ($lifetime === 0 || $lifetime > $this->maximumLifetime) {
-			$lifetime = $this->maximumLifetime;
-		}
-		return $lifetime;
-	}
+    /**
+     * Get the real life time
+     *
+     * @param int $lifetime
+     *
+     * @return int
+     */
+    protected function getRealLifetime($lifetime)
+    {
+        if (is_null($lifetime)) {
+            $lifetime = $this->defaultLifetime;
+        }
+        if ($lifetime === 0 || $lifetime > $this->maximumLifetime) {
+            $lifetime = $this->maximumLifetime;
+        }
+        return $lifetime;
+    }
 
-	/**
-	 * Get the database connection
-	 *
-	 * @return DatabaseConnection
-	 */
-	protected function getDatabaseConnection() {
-		return $GLOBALS['TYPO3_DB'];
-	}
+    /**
+     * Get the database connection
+     *
+     * @return DatabaseConnection
+     */
+    protected function getDatabaseConnection()
+    {
+        return $GLOBALS['TYPO3_DB'];
+    }
 }
