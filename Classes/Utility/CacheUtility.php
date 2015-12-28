@@ -24,7 +24,7 @@ class CacheUtility
      * @return \TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
      * @throws \TYPO3\CMS\Core\Cache\Exception\NoSuchCacheException
      */
-    static public function getCache()
+    public static function getCache()
     {
         /** @var \TYPO3\CMS\Core\Cache\CacheManager $cacheManager */
         $objectManager = new ObjectManager();
@@ -37,7 +37,7 @@ class CacheUtility
      *
      * @param int $pageId
      */
-    static public function clearByPageId($pageId)
+    public static function clearByPageId($pageId)
     {
         $cache = self::getCache();
         $cacheEntries = array_keys($cache->getByTag('pageId_' . (int)$pageId));

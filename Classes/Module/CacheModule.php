@@ -83,7 +83,6 @@ class CacheModule extends AbstractFunctionModule
         $cache = CacheUtility::getCache();
 
         foreach ($tree->tree as $row) {
-
             $cacheEntries = $cache->getByTag('sfc_pageId_' . $row['row']['uid']);
             if ($cacheEntries) {
                 $isFirst = true;
@@ -150,7 +149,6 @@ class CacheModule extends AbstractFunctionModule
     protected function processExpandCollapseLinks($content)
     {
         if (strpos($content, 'PM=') !== false && $this->pageId > 0) {
-
             $content = preg_replace('/(href=")([^"]+PM=[^"#]+)(#[^"]+)?(")/',
                 '${1}${2}&id=' . $this->pageId . '${3}${4}', $content);
         }

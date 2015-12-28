@@ -24,7 +24,7 @@ class CookieUtility
      *
      * @param $lifetime
      */
-    static public function setCookie($lifetime)
+    public static function setCookie($lifetime)
     {
         $cookieDomain = self::getCookieDomain();
         setcookie(self::FE_COOKIE_NAME, 'fe_typo_user_logged_in', $lifetime, '/', $cookieDomain ? $cookieDomain : null);
@@ -37,7 +37,7 @@ class CookieUtility
      * @return string The domain to be used on setting cookies
      * @see AbstractUserAuthentication::getCookieDomain
      */
-    static protected function getCookieDomain()
+    protected static function getCookieDomain()
     {
         $result = '';
         $cookieDomain = $GLOBALS['TYPO3_CONF_VARS']['SYS']['cookieDomain'];
