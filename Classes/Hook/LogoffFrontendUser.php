@@ -8,7 +8,6 @@ namespace SFC\NcStaticfilecache\Hook;
 
 use SFC\NcStaticfilecache\Utility\CookieUtility;
 use TYPO3\CMS\Core\Authentication\AbstractUserAuthentication;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * LogoffFrontendUser

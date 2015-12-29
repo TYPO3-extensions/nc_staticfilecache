@@ -8,6 +8,9 @@
 
 namespace SFC\NcStaticfilecache\Utility;
 
+use TYPO3\CMS\Core\Cache\CacheManager;
+use TYPO3\CMS\Core\Cache\Exception\NoSuchCacheException;
+use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /**
@@ -21,12 +24,12 @@ class CacheUtility
     /**
      * Get the static file cache
      *
-     * @return \TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
-     * @throws \TYPO3\CMS\Core\Cache\Exception\NoSuchCacheException
+     * @return FrontendInterface
+     * @throws NoSuchCacheException
      */
     public static function getCache()
     {
-        /** @var \TYPO3\CMS\Core\Cache\CacheManager $cacheManager */
+        /** @var CacheManager $cacheManager */
         $objectManager = new ObjectManager();
         $cacheManager = $objectManager->get(CacheManager::class);
         return $cacheManager->getCache('static_file_cache');
