@@ -45,7 +45,7 @@ class CacheModule extends AbstractFunctionModule
 
         // Initialize tree object:
         /* @var $tree BrowseTreeView */
-        $tree = GeneralUtility::makeInstance('TYPO3\\CMS\\Backend\\Tree\\View\\BrowseTreeView');
+        $tree = GeneralUtility::makeInstance(BrowseTreeView::class);
         $tree->makeHTML = 2;
         $tree->init();
 
@@ -110,7 +110,7 @@ class CacheModule extends AbstractFunctionModule
         }
 
         /** @var StandaloneView $renderer */
-        $renderer = GeneralUtility::makeInstance('TYPO3\\CMS\\Fluid\\View\\StandaloneView');
+        $renderer = GeneralUtility::makeInstance(StandaloneView::class);
         $renderer->setTemplatePathAndFilename(GeneralUtility::getFileAbsFileName('EXT:nc_staticfilecache/Resources/Private/Templates/Module.html'));
         $renderer->assignMultiple([
             'requestUri' => GeneralUtility::getIndpEnv('REQUEST_URI'),

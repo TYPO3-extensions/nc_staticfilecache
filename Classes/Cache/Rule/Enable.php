@@ -33,7 +33,7 @@ class Enable extends AbstractRule
     public function checkRule($frontendController, $uri, &$explanation, &$skipProcessing)
     {
         /** @var Configuration $configuration */
-        $configuration = GeneralUtility::makeInstance('SFC\\NcStaticfilecache\\Configuration');
+        $configuration = GeneralUtility::makeInstance(Configuration::class);
         if ((boolean)$configuration->get('disableCache') === true) {
             $explanation[__CLASS__] = 'static cache disabled by TypoScript';
         }

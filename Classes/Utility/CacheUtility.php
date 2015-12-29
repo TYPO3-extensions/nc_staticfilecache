@@ -28,7 +28,7 @@ class CacheUtility
     {
         /** @var \TYPO3\CMS\Core\Cache\CacheManager $cacheManager */
         $objectManager = new ObjectManager();
-        $cacheManager = $objectManager->get('TYPO3\\CMS\\Core\\Cache\\CacheManager');
+        $cacheManager = $objectManager->get(CacheManager::class);
         return $cacheManager->getCache('static_file_cache');
     }
 

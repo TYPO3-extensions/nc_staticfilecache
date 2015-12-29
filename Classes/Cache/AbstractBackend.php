@@ -8,6 +8,7 @@
 
 namespace SFC\NcStaticfilecache\Cache;
 
+use SFC\NcStaticfilecache\Configuration;
 use TYPO3\CMS\Core\Cache\Backend\Typo3DatabaseBackend;
 use TYPO3\CMS\Core\Database\DatabaseConnection;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -29,7 +30,7 @@ class AbstractBackend extends Typo3DatabaseBackend
     /**
      * Configuration
      *
-     * @var \SFC\NcStaticfilecache\Configuration
+     * @var Configuration
      */
     protected $configuration;
 
@@ -42,7 +43,7 @@ class AbstractBackend extends Typo3DatabaseBackend
     public function __construct($context, array $options = [])
     {
         parent::__construct($context, $options);
-        $this->configuration = GeneralUtility::makeInstance('SFC\\NcStaticfilecache\\Configuration');
+        $this->configuration = GeneralUtility::makeInstance(Configuration::class);
     }
 
     /**

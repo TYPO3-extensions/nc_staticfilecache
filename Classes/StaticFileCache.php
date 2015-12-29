@@ -56,7 +56,7 @@ class StaticFileCache implements SingletonInterface
      */
     public static function getInstance()
     {
-        return GeneralUtility::makeInstance('SFC\\NcStaticfilecache\\StaticFileCache');
+        return GeneralUtility::makeInstance(StaticFileCache::class);
     }
 
     /**
@@ -65,8 +65,8 @@ class StaticFileCache implements SingletonInterface
     public function __construct()
     {
         $this->cache = CacheUtility::getCache();
-        $this->signalDispatcher = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher');
-        $this->configuration = GeneralUtility::makeInstance('SFC\\NcStaticfilecache\\Configuration');
+        $this->signalDispatcher = GeneralUtility::makeInstance(Dispatcher::class);
+        $this->configuration = GeneralUtility::makeInstance(Configuration::class);
     }
 
     /**
@@ -196,7 +196,7 @@ class StaticFileCache implements SingletonInterface
     {
         $objectManager = new ObjectManager();
         /** @var UriBuilder $uriBuilder */
-        $uriBuilder = $objectManager->get('TYPO3\\CMS\\Extbase\\Mvc\\Web\\Routing\\UriBuilder');
+        $uriBuilder = $objectManager->get(UriBuilder::class);
         if (ObjectAccess::getProperty($uriBuilder, 'contentObject', true) === null) {
             // there are situations without a valid contentObject in the URI builder
             // prevent this situation by return the original request URI

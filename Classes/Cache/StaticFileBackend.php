@@ -94,7 +94,7 @@ class StaticFileBackend extends AbstractBackend
             $lifetime = $accessTimeout ? $accessTimeout : $this->getRealLifetime($lifetime);
 
             /** @var StandaloneView $renderer */
-            $renderer = GeneralUtility::makeInstance('TYPO3\\CMS\\Fluid\\View\\StandaloneView');
+            $renderer = GeneralUtility::makeInstance(StandaloneView::class);
             $renderer->setTemplatePathAndFilename(GeneralUtility::getFileAbsFileName('EXT:nc_staticfilecache/Resources/Private/Templates/Htaccess.html'));
             $renderer->assignMultiple([
                 'mode' => $accessTimeout ? 'A' : 'M',
