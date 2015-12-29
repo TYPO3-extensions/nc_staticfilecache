@@ -55,7 +55,7 @@ class StaticFileCache implements SingletonInterface
      */
     public static function getInstance()
     {
-        return GeneralUtility::makeInstance(StaticFileCache::class);
+        return GeneralUtility::makeInstance(self::class);
     }
 
     /**

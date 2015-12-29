@@ -42,7 +42,7 @@ $ruleClasses = [
 
 /** @var \TYPO3\CMS\Extbase\SignalSlot\Dispatcher $signalSlotDispatcher */
 $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\SignalSlot\Dispatcher::class);
-foreach($ruleClasses as $class){
+foreach ($ruleClasses as $class) {
     $signalSlotDispatcher->connect(\SFC\NcStaticfilecache\StaticFileCache::class, 'cacheRule', $class, 'check');
 }
 
