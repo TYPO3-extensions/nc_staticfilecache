@@ -27,4 +27,9 @@ $EM_CONF[$_EXTKEY] = [
             'php' => '5.5.0-0.0.0',
         ],
     ],
+    'autoload' => [
+        'psr-4' => [
+            'SFC\\NcStaticfilecache\\' => 'Classes'
+        ],
+    ],
 ];
