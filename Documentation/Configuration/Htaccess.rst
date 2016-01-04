@@ -1,14 +1,7 @@
 htaccess file
 ^^^^^^^^^^^^^
 
-There are four example .htaccess configurations stored in the 'doc' directory. They are named:
-
-- gzip.htaccess – use if you enabled gzipping and use realurl or simulateStatic
-- plain.htaccess – use if you have not enabled gzipping and use realurl or simulateStatic
-
-The .htaccess files use an optimized rewrite configuration as is explained here: http://www.typofree.org/article/archive/2008/june/title/rethinking-the-realurl-mod-rewrite-rules/
-
-Here is a part of the gzip.realurl version:
+This is the base .htaccess configuration. Please take a look for the default variables (SFC_ROOT, SFC_GZIP) and read the comments carefully.
 
 .. code-block:: bash
 
