@@ -201,9 +201,11 @@ class StaticFileCache implements SingletonInterface
             // prevent this situation by return the original request URI
             return $uri;
         }
-        return $uriBuilder->reset()
+        $url = $uriBuilder->reset()
             ->setAddQueryString(true)
             ->build();
+
+        return preg_replace('/https?:\/\/[^\/]+/is', '', $url);
     }
 
     /**
