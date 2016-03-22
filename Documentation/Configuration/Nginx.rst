@@ -33,10 +33,16 @@ By the following configuration:
        return 405;
    }
 
+   location @t3frontend {
+       # Using try_files for ease of configuration demonstration here,
+       # you can also fastcgi_pass directly to php here
+       try_files $uri /index.php$is_args$args;
+   }
+
    location @sfc {
        # Perform an internal redirect to TYPO3 if any of the required
        # conditions for static file cache don't match
-       error_page 405 = /index.php$is_args$args;
+       error_page 405 = @t3frontend;
 
        # Query String needs to be empty
        if ($args != '') {
